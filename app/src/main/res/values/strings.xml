@@ -1,0 +1,80 @@
+<resources>
+    <string name="app_name">CollabTask</string>
+    <string name="tab_home">Home</string>
+    <string name="tab_tasks">Tarefas</string>
+    <string name="tab_profile">Perfil</string>
+    <string name="headline_home">Colabore Facilmente em Cada Tarefa</string>
+    <string name="home_intro">O ColabTask ajuda as equipes a se manterem organizadas, acompanharem o progresso e trabalharem juntas com clareza.</string>
+    <string name="start_now">Ver Todas as Tarefas</string>
+    <string name="home_section_title">Suas Tarefas em Andamento</string>
+    <string name="home_section_subtitle">Veja rapidamente o que esta em progresso no seu time.</string>
+    <string name="profile_title">Gerenciamento de Perfil</string>
+    <string name="profile_subtitle">Visualize e atualize as informacoes da sua conta</string>
+    <string name="reset_password">Redefina sua senha</string>
+    <string name="new_password">Nova Senha</string>
+    <string name="confirm_new_password">Confirme a Nova Senha</string>
+    <string name="confirm">Confirmar</string>
+    <string name="logout">Sair</string>
+    <string name="change_password">Trocar Senha</string>
+    <string name="send_recovery_email">Enviar E-mail de Redefinicao de Senha</string>
+
+    <string name="xml_login_title">Bem-vindo(a) de Volta</string>
+    <string name="xml_login_subtitle">Entre para acessar o seu painel colaborativo.</string>
+    <string name="xml_email">Email</string>
+    <string name="xml_password">Senha</string>
+    <string name="xml_sign_in">Login</string>
+    <string name="xml_create_account">Nao tem uma conta? Cadastre-se</string>
+    <string name="xml_forgot_password">Esqueceu sua senha? Redefinir</string>
+
+    <string name="xml_register_title">Criar Conta</string>
+    <string name="xml_full_name">Nome Completo</string>
+    <string name="xml_register_action">Cadastrar</string>
+    <string name="xml_back_to_login">Ja tem uma conta? Faca login</string>
+
+    <string name="xml_home_hero_title">Bem-vindo(a) ao Seu Painel de Tarefas</string>
+    <string name="xml_home_hero_subtitle">Mantenha-se atualizado com suas tarefas em andamento e colabore com sua equipe.</string>
+    <string name="xml_home_feature_title">Visao rapida do progresso</string>
+    <string name="xml_home_feature_desc">Acompanhe entregas, status e prioridades sem perder contexto.</string>
+
+    <string name="xml_tasks_title">Painel de Tarefas</string>
+    <string name="xml_tasks_subtitle">Crie, gerencie e acompanhe todas as suas tarefas colaborativas</string>
+    <string name="xml_create_task">Criar Nova Tarefa</string>
+    <string name="xml_edit_task">Editar Tarefa</string>
+
+    <string name="xml_create_task_title">Criar Nova Tarefa</string>
+    <string name="xml_edit_task_title">Editar Tarefa</string>
+    <string name="xml_task_title">Nome da Tarefa</string>
+    <string name="xml_task_description">Descricao</string>
+    <string name="xml_assign_to">Atribuir Colaboradores</string>
+    <string name="xml_save_task">Criar Tarefa</string>
+    <string name="xml_status">Status</string>
+    <string name="xml_comment">Comentario</string>
+    <string name="xml_save_changes">Editar Tarefa</string>
+
+    <string name="xml_profile_section">Seu Perfil</string>
+    <string name="xml_profile_activity">Resumo da Atividade</string>
+    <string name="xml_profile_security">Seguranca da Conta</string>
+    <string name="xml_profile_session">Gerenciamento de Sessao</string>
+    <string name="xml_profile_created_tasks">Tarefas Criadas</string>
+    <string name="xml_profile_assigned_tasks">Tarefas Atribuidas a Voce</string>
+    <string name="xml_profile_completed_tasks">Tarefas Completadas</string>
+
+    <string name="xml_usage_title">Como usar o CollabTask</string>
+    <string name="xml_usage_step_1">1. Crie tarefas e defina prioridades.</string>
+    <string name="xml_usage_step_2">2. Atribua colaboradores responsaveis.</string>
+    <string name="xml_usage_step_3">3. Atualize status e registre comentarios.</string>
+    <string name="xml_usage_step_4">4. Acompanhe notificacoes e historico.</string>
+    <string name="xml_go_to_dashboard">Ir para o Painel</string>
+
+    <string name="xml_login_error">Credenciais invalidas. Verifique e tente novamente.</string>
+    <string name="xml_register_error">Nao foi possivel cadastrar. Verifique os campos.</string>
+    <string name="xml_password_updated">Senha redefinida com sucesso.</string>
+    <string name="xml_password_error">As senhas nao conferem ou sao muito curtas.</string>
+    <string name="xml_task_saved">Tarefa criada com sucesso.</string>
+    <string name="xml_task_updated">Tarefa atualizada com sucesso.</string>
+    <string name="xml_task_error">Nao foi possivel salvar. Verifique os dados.</string>
+    <string name="xml_task_owner_fmt">Criada por: %1$s</string>
+    <string name="xml_task_status_fmt">%1$s</string>
+    <string name="xml_profile_user_fmt">Usuario: %1$s</string>
+    <string name="xml_profile_role_fmt">Perfil: %1$s</string>
+</resources>
