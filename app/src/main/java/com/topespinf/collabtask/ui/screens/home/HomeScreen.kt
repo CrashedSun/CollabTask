@@ -1,11 +1,11 @@
 package com.topespinf.collabtask.ui.screens.home
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -36,7 +36,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
@@ -106,7 +108,7 @@ fun HomeScreen(
             }
         }
         item {
-            CtaSection()
+            CtaSection(onGetStartedClick = onGetStartedClick)
         }
     }
 }
@@ -124,9 +126,17 @@ private fun HeroSection(
                     colors = listOf(Primary, Secondary)
                 )
             )
-            .padding(20.dp)
+            .padding(start = 20.dp, top = 8.dp, end = 20.dp, bottom = 20.dp)
     ) {
-        Column(verticalArrangement = Arrangement.spacedBy(12.dp)) {
+        Column(verticalArrangement = Arrangement.spacedBy(6.dp)) {
+            Image(
+                painter = painterResource(id = R.drawable.logo_collabtask),
+                contentDescription = stringResource(R.string.app_name),
+                modifier = Modifier
+                    .size(192.dp)
+                    .align(Alignment.CenterHorizontally),
+                contentScale = ContentScale.Fit
+            )
             Text(
                 text = stringResource(R.string.headline_home),
                 style = MaterialTheme.typography.headlineMedium,
@@ -172,7 +182,9 @@ private fun FeatureCard(feature: FeatureItem) {
 }
 
 @Composable
-private fun CtaSection() {
+private fun CtaSection(
+    onGetStartedClick: () -> Unit
+) {
     Box(
         modifier = Modifier
             .fillMaxWidth()
@@ -194,8 +206,8 @@ private fun CtaSection() {
                 color = Color.White.copy(alpha = 0.9f)
             )
             Spacer(modifier = Modifier.height(12.dp))
-            Row {
-                Text("Cadastre-se Agora", color = Color.White, fontWeight = FontWeight.Bold)
+            Button(onClick = onGetStartedClick) {
+                Text("Cadastre-se Agora")
             }
         }
     }

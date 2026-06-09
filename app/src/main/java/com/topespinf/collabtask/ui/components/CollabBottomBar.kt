@@ -2,7 +2,6 @@ package com.topespinf.collabtask.ui.components
 
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.outlined.ListAlt
-import androidx.compose.material.icons.outlined.Home
 import androidx.compose.material.icons.outlined.Person
 import androidx.compose.material3.Icon
 import androidx.compose.material3.NavigationBar
@@ -20,7 +19,6 @@ data class BottomItem(
 )
 
 private val bottomItems = listOf(
-    BottomItem(AppRoute.Home, R.string.tab_home) { Icon(Icons.Outlined.Home, contentDescription = null) },
     BottomItem(AppRoute.Tasks, R.string.tab_tasks) { Icon(Icons.AutoMirrored.Outlined.ListAlt, contentDescription = null) },
     BottomItem(AppRoute.Profile, R.string.tab_profile) { Icon(Icons.Outlined.Person, contentDescription = null) }
 )

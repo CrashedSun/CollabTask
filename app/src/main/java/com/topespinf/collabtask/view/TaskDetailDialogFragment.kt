@@ -43,15 +43,15 @@ class TaskDetailDialogFragment : BottomSheetDialogFragment() {
         if (task != null) {
             titleView.text = task.title
             descriptionView.text = task.description
-            creatorView.text = "Criada por: ${task.assignee}"
+            creatorView.text = "Criada por: ${task.ownerName}"
             statusView.text = task.status
 
-            // Exibir colaboradores
+            // Exibir participantes
             collaboratorsContainer.removeAllViews()
-            if (task.collaborators.isNotEmpty()) {
-                task.collaborators.forEach { collaborator ->
+            if (task.participants.isNotEmpty()) {
+                task.participants.forEach { collaborator ->
                     val collaboratorView = TextView(requireContext()).apply {
-                        text = "• $collaborator"
+                        text = "• ${collaborator.name} (${collaborator.role})"
                         textSize = 16f
                         setTextColor(requireContext().getColor(R.color.xml_text_primary))
                     }

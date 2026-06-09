@@ -20,12 +20,10 @@ class ProfileActivity : ComponentActivity() {
         profileViewModel = ViewModelProvider(this)[ProfileViewModel::class.java]
 
         val usernameText = findViewById<TextView>(R.id.profileUsernameText)
-        val roleText = findViewById<TextView>(R.id.profileRoleText)
 
         val user = profileViewModel.getCurrentUser()
         if (user != null) {
-            usernameText.text = getString(R.string.xml_profile_user_fmt, user.name)
-            roleText.text = getString(R.string.xml_profile_role_fmt, user.role)
+            usernameText.text = getString(R.string.xml_profile_user_fmt, user.user)
         }
 
         findViewById<MaterialButton>(R.id.profileChangePasswordButton).setOnClickListener {

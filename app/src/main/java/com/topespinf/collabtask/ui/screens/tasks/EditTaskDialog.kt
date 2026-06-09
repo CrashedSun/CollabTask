@@ -1,18 +1,14 @@
 package com.topespinf.collabtask.ui.screens.tasks
 
+import android.util.Log
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Close
 import androidx.compose.material3.Button
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.ModalBottomSheet
 import androidx.compose.material3.OutlinedButton
@@ -23,20 +19,18 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
-import androidx.lifecycle.viewmodel.compose.viewModel
-import com.topespinf.collabtask.viewmodel.TaskViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun EditTaskDialog(
     onDismiss: () -> Unit,
-    onSave: () -> Unit,
-    taskViewModel: TaskViewModel = viewModel()
+    onSave: () -> Unit
 ) {
+    Log.d("EditTaskDialog", "EditTaskDialog is being rendered")
+    
     var status by remember { mutableStateOf("Em Andamento") }
     var comment by remember { mutableStateOf("") }
 
@@ -50,21 +44,11 @@ fun EditTaskDialog(
                 .verticalScroll(rememberScrollState()),
             verticalArrangement = Arrangement.spacedBy(12.dp)
         ) {
-            // Header com título e botão de fechar
-            Row(
-                modifier = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.SpaceBetween,
-                verticalAlignment = Alignment.CenterVertically
-            ) {
-                Text(
-                    "Editar Tarefa",
-                    style = MaterialTheme.typography.headlineSmall,
-                    fontWeight = FontWeight.Bold
-                )
-                IconButton(onClick = onDismiss) {
-                    Icon(Icons.Filled.Close, contentDescription = "Fechar")
-                }
-            }
+            Text(
+                "Editar Tarefa",
+                style = MaterialTheme.typography.headlineSmall,
+                fontWeight = FontWeight.Bold
+            )
 
             Text(
                 "Atualize status, progresso e comentários.",
@@ -72,7 +56,6 @@ fun EditTaskDialog(
                 color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.7f)
             )
 
-            // Campo Status
             OutlinedTextField(
                 value = status,
                 onValueChange = { status = it },
@@ -80,7 +63,6 @@ fun EditTaskDialog(
                 modifier = Modifier.fillMaxWidth()
             )
 
-            // Campo Comentário
             OutlinedTextField(
                 value = comment,
                 onValueChange = { comment = it },
@@ -89,7 +71,6 @@ fun EditTaskDialog(
                 minLines = 4
             )
 
-            // Botão Salvar
             Button(
                 onClick = {
                     onSave()
@@ -100,19 +81,19 @@ fun EditTaskDialog(
                 Text("Salvar Alterações")
             }
 
-            // Botão Cancelar
             OutlinedButton(
                 onClick = onDismiss,
                 modifier = Modifier.fillMaxWidth()
             ) {
                 Text("Cancelar")
             }
-
-            // Espaço para o bottom padding
-            Text("", modifier = Modifier.padding(bottom = 16.dp))
         }
     }
 }
+
+
+
+
 
 
 

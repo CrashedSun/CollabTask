@@ -15,7 +15,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="14dp">
+        android:padding="10dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -30,7 +30,7 @@
                 android:layout_weight="1"
                 android:text="aaaa"
                 android:textColor="@color/xml_text_primary"
-                android:textSize="24sp"
+                android:textSize="18sp"
                 android:textStyle="bold" />
 
             <com.google.android.material.card.MaterialCardView
@@ -83,43 +83,50 @@
             android:layout_marginTop="10dp"
             android:text="Em Andamento"
             android:textColor="@color/xml_text_primary"
-            android:textSize="22sp"
+            android:textSize="16sp"
             android:textStyle="bold" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="14dp"
-            android:gravity="end"
-            android:orientation="horizontal">
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:baselineAligned="false">
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/viewTaskDetailsButton"
                 style="@style/Widget.Material3.Button.OutlinedButton"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:text="Ver Detalhes"
                 android:textColor="@color/xml_text_primary"
+                android:textSize="12sp"
                 app:strokeColor="@color/xml_border" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/editTaskCardButton"
                 style="@style/Widget.Material3.Button.OutlinedButton"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:layout_marginStart="8dp"
                 android:text="Editar"
                 android:textColor="@color/xml_text_primary"
+                android:textSize="12sp"
                 app:strokeColor="@color/xml_border" />
 
             <com.google.android.material.button.MaterialButton
-                android:layout_width="wrap_content"
+                style="@style/Widget.Material3.Button"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:layout_marginStart="8dp"
                 android:text="Deletar"
                 android:textColor="@color/white"
-                app:backgroundTint="@color/xml_danger"
-                app:cornerRadius="10dp" />
+                android:textSize="12sp"
+                app:backgroundTint="@color/xml_danger" />
         </LinearLayout>
     </LinearLayout>
 

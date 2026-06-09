@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.kotlinCompose)
+    alias(libs.plugins.googleServices)
 }
 
 android {
@@ -46,9 +47,10 @@ kotlin {
     }
 }
 
-dependencies {
+    dependencies {
     implementation(libs.coreKtx)
     implementation(libs.lifecycleRuntimeKtx)
+    implementation(libs.lifecycleViewModelKtx)
     implementation(libs.activityCompose)
     implementation(platform(libs.composeBom))
     implementation(libs.composeUi)
@@ -58,6 +60,12 @@ dependencies {
     implementation(libs.composeMaterialIconsExtended)
     implementation(libs.navigationCompose)
     implementation(libs.material)
+    implementation(platform(libs.firebaseBom))
+    implementation(libs.firebaseAuthKtx)
+    implementation(libs.firebaseFirestoreKtx)
+    implementation(libs.playServicesAuth)
+    implementation(libs.coroutinesAndroid)
+    implementation(libs.coroutinesPlayServices)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidxJunit)

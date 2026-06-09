@@ -3,21 +3,13 @@ package com.topespinf.collabtask.view
 import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
-import com.google.android.material.button.MaterialButton
-import com.topespinf.collabtask.R
+import com.topespinf.collabtask.MainActivity
 
 class LandingActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.screen_landing)
-
-        findViewById<MaterialButton>(R.id.landingLoginButton).setOnClickListener {
-            startActivity(Intent(this, LoginActivity::class.java))
-        }
-
-        findViewById<MaterialButton>(R.id.landingRegisterButton).setOnClickListener {
-            startActivity(Intent(this, RegisterActivity::class.java))
-        }
+        startActivity(Intent(this, MainActivity::class.java))
+        finish()
     }
 }
 

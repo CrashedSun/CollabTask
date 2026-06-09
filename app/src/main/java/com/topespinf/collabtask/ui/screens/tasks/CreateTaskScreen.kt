@@ -19,7 +19,6 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
@@ -36,6 +35,7 @@ fun CreateTaskScreen(
     var title by remember { mutableStateOf("") }
     var description by remember { mutableStateOf("") }
     var assignedTo by remember { mutableStateOf("") }
+    var milestones by remember { mutableStateOf("") }
     var isLoading by remember { mutableStateOf(false) }
     var errorMessage by remember { mutableStateOf<String?>(null) }
 
@@ -46,7 +46,7 @@ fun CreateTaskScreen(
             .padding(16.dp),
         verticalArrangement = Arrangement.spacedBy(12.dp)
     ) {
-        Text("Criacao de Tarefa", style = MaterialTheme.typography.headlineSmall, fontWeight = FontWeight.Bold)
+        Text("Criação de Tarefa", style = MaterialTheme.typography.headlineSmall, fontWeight = FontWeight.Bold)
         Text(
             "Crie e atribua tarefas para sua equipe.",
             style = MaterialTheme.typography.bodyMedium,
@@ -76,10 +76,18 @@ fun CreateTaskScreen(
                     modifier = Modifier.fillMaxWidth(),
                     enabled = !isLoading
                 )
+                OutlinedTextField(
+                    value = milestones,
+                    onValueChange = { milestones = it },
+                    label = { Text("Milestones (separadas por vírgula)") },
+                    modifier = Modifier.fillMaxWidth(),
+                    minLines = 2,
+                    enabled = !isLoading
+                )
 
-                if (errorMessage != null) {
+                if (!errorMessage.isNullOrBlank()) {
                     Text(
-                        text = errorMessage ?: "",
+                        text = errorMessage.orEmpty(),
                         color = MaterialTheme.colorScheme.error,
                         style = MaterialTheme.typography.bodySmall
                     )
@@ -87,31 +95,39 @@ fun CreateTaskScreen(
 
                 Button(
                     onClick = {
-                        if (title.isNotBlank() && description.isNotBlank() && assignedTo.isNotBlank()) {
-                            isLoading = true
-                            val success = taskViewModel.createTask(title, description, assignedTo)
-                            isLoading = false
-
-                            if (success) {
-                                onSave()
-                            } else {
-                                errorMessage = "Erro ao criar tarefa. Tente novamente."
-                            }
-                        } else {
-                            errorMessage = "Por favor, preencha todos os campos"
+                        if (title.isBlank() || description.isBlank() || assignedTo.isBlank()) {
+                            errorMessage = "Por favor, preencha todos os campos."
+                            return@Button
                         }
+                        val milestoneTitles = milestones.split(",").map { it.trim() }.filter { it.isNotBlank() }
+                        if (milestoneTitles.isEmpty()) {
+                            errorMessage = "Adicione ao menos uma milestone."
+                            return@Button
+                        }
+                        isLoading = true
+                        taskViewModel.createTask(
+                            title = title,
+                            description = description,
+                            assignee = assignedTo,
+                            milestones = milestoneTitles,
+                            onSuccess = {
+                                isLoading = false
+                                onSave()
+                            },
+                            onError = {
+                                isLoading = false
+                                errorMessage = it
+                            }
+                        )
                     },
                     modifier = Modifier.fillMaxWidth(),
                     enabled = !isLoading
                 ) {
                     if (isLoading) {
-                        CircularProgressIndicator(
-                            modifier = Modifier
-                                .align(Alignment.CenterVertically)
-                                .padding(end = 8.dp)
-                        )
+                        CircularProgressIndicator()
+                    } else {
+                        Text("Salvar Tarefa")
                     }
-                    Text("Salvar Tarefa")
                 }
                 OutlinedButton(
                     onClick = onCancel,
@@ -124,4 +140,3 @@ fun CreateTaskScreen(
         }
     }
 }
-

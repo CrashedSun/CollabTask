@@ -19,10 +19,6 @@ class HomeActivity : ComponentActivity() {
         findViewById<MaterialButton>(R.id.homeOpenTasksButton).setOnClickListener {
             startActivity(Intent(this, TasksActivity::class.java))
         }
-
-        findViewById<MaterialButton>(R.id.homeOpenProfileButton).setOnClickListener {
-            startActivity(Intent(this, ProfileActivity::class.java))
-        }
     }
 }
 

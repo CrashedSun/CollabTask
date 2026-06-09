@@ -32,11 +32,118 @@
             app:iconTint="@color/xml_text_secondary" />
     </LinearLayout>
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nome da Tarefa"
+        android:textColor="@color/xml_text_primary"
+        android:textSize="14sp"
+        android:textStyle="bold" />
+
     <com.google.android.material.textfield.TextInputLayout
         style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/xml_status"
+        android:layout_marginTop="6dp"
+        app:boxBackgroundColor="@color/xml_surface_muted"
+        app:boxStrokeColor="@color/xml_border">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editTaskName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="aaaa" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:text="Descrição"
+        android:textColor="@color/xml_text_primary"
+        android:textSize="14sp"
+        android:textStyle="bold" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        app:boxBackgroundColor="@color/xml_surface_muted"
+        app:boxStrokeColor="@color/xml_border">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editTaskDescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textMultiLine"
+            android:minLines="3"
+            android:text="aaaa" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:text="Nível de Prioridade"
+        android:textColor="@color/xml_text_primary"
+        android:textSize="14sp"
+        android:textStyle="bold" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        app:boxBackgroundColor="@color/xml_surface_muted"
+        app:boxStrokeColor="@color/xml_border">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editTaskPriority"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Baixa"
+            android:editable="false" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:text="Porcentagem de Conclusão"
+        android:textColor="@color/xml_text_primary"
+        android:textSize="14sp"
+        android:textStyle="bold" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        app:boxBackgroundColor="@color/xml_surface_muted"
+        app:boxStrokeColor="@color/xml_border">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:text="12" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:text="Status"
+        android:textColor="@color/xml_text_primary"
+        android:textSize="14sp"
+        android:textStyle="bold" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
         app:boxBackgroundColor="@color/xml_surface_muted"
         app:boxStrokeColor="@color/xml_border">
 
@@ -44,72 +151,43 @@
             android:id="@+id/editTaskStatus"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Em Andamento" />
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-        style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:hint="@string/xml_comment"
-        app:boxBackgroundColor="@color/xml_surface_muted"
-        app:boxStrokeColor="@color/xml_border">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/editTaskComment"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="textMultiLine"
-            android:minLines="4" />
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-        style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:hint="Porcentagem de Conclusao"
-        app:boxBackgroundColor="@color/xml_surface_muted"
-        app:boxStrokeColor="@color/xml_border">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="number" />
+            android:text="Em Andamento"
+            android:editable="false" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="Colaboradores"
-        android:textColor="@color/xml_text_secondary"
-        android:textSize="14sp" />
+        android:layout_marginTop="12dp"
+        android:text="Atribuir Colaboradores"
+        android:textColor="@color/xml_text_primary"
+        android:textSize="14sp"
+        android:textStyle="bold" />
 
     <LinearLayout
-        android:id="@+id/editTaskCollaboratorsContainer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="12dp"
-        android:orientation="vertical" />
+        android:layout_marginTop="6dp"
+        android:orientation="horizontal"
+        android:padding="8dp">
 
-    <com.google.android.material.textfield.TextInputLayout
-        style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Adicionar colaborador"
-        app:boxBackgroundColor="@color/xml_surface_muted"
-        app:boxStrokeColor="@color/xml_border"
-        app:endIconMode="custom"
-        app:endIconDrawable="@android:drawable/ic_input_add">
+        <com.google.android.material.chip.Chip
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:text="✕ arthurm"
+            android:textColor="@color/xml_text_primary"
+            app:chipBackgroundColor="@color/xml_surface_muted"
+            app:closeIconEnabled="false" />
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/addCollaboratorInput"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-    </com.google.android.material.textfield.TextInputLayout>
+        <com.google.android.material.chip.Chip
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="✕ aaaa"
+            android:textColor="@color/xml_text_primary"
+            app:chipBackgroundColor="@color/xml_surface_muted"
+            app:closeIconEnabled="false" />
+    </LinearLayout>
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/saveTaskChangesButton"
@@ -123,6 +201,9 @@
         app:cornerRadius="10dp" />
 
 </LinearLayout>
+
+
+
 
 
 

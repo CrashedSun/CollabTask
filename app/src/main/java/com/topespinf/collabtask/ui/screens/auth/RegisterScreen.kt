@@ -22,16 +22,21 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.topespinf.collabtask.ui.theme.ScreenBackground
+import com.topespinf.collabtask.viewmodel.AuthViewModel
 
 @Composable
 fun RegisterScreen(
     onRegisterSuccess: () -> Unit,
-    onBackToLogin: () -> Unit
+    onBackToLogin: () -> Unit,
+    authViewModel: AuthViewModel = viewModel()
 ) {
     var fullName by remember { mutableStateOf("") }
     var email by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
+    var isLoading by remember { mutableStateOf(false) }
+    var errorMessage by remember { mutableStateOf<String?>(null) }
 
     Column(
         modifier = Modifier
@@ -58,29 +63,59 @@ fun RegisterScreen(
                     value = fullName,
                     onValueChange = { fullName = it },
                     label = { Text("Nome completo") },
-                    modifier = Modifier.fillMaxWidth()
+                    modifier = Modifier.fillMaxWidth(),
+                    enabled = !isLoading
                 )
                 OutlinedTextField(
                     value = email,
                     onValueChange = { email = it },
                     label = { Text("E-mail") },
-                    modifier = Modifier.fillMaxWidth()
+                    modifier = Modifier.fillMaxWidth(),
+                    enabled = !isLoading
                 )
                 OutlinedTextField(
                     value = password,
                     onValueChange = { password = it },
                     label = { Text("Senha") },
                     visualTransformation = PasswordVisualTransformation(),
-                    modifier = Modifier.fillMaxWidth()
+                    modifier = Modifier.fillMaxWidth(),
+                    enabled = !isLoading
                 )
-                Button(onClick = onRegisterSuccess, modifier = Modifier.fillMaxWidth()) {
+
+                if (!errorMessage.isNullOrBlank()) {
+                    Text(
+                        text = errorMessage.orEmpty(),
+                        color = MaterialTheme.colorScheme.error,
+                        style = MaterialTheme.typography.bodySmall
+                    )
+                }
+
+                Button(
+                    onClick = {
+                        isLoading = true
+                        authViewModel.register(
+                            name = fullName,
+                            email = email,
+                            password = password,
+                            onSuccess = {
+                                isLoading = false
+                                onRegisterSuccess()
+                            },
+                            onError = {
+                                isLoading = false
+                                errorMessage = it
+                            }
+                        )
+                    },
+                    modifier = Modifier.fillMaxWidth(),
+                    enabled = !isLoading
+                ) {
                     Text("Cadastrar")
                 }
-                OutlinedButton(onClick = onBackToLogin, modifier = Modifier.fillMaxWidth()) {
+                OutlinedButton(onClick = onBackToLogin, modifier = Modifier.fillMaxWidth(), enabled = !isLoading) {
                     Text("Voltar para Login")
                 }
             }
         }
     }
 }
-

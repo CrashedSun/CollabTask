@@ -22,10 +22,6 @@ class TasksActivity : AppCompatActivity() {
         findViewById<MaterialButton>(R.id.openCreateTaskButton).setOnClickListener {
             CreateTaskDialogFragment().show(supportFragmentManager, "CreateTaskDialog")
         }
-
-        findViewById<MaterialButton>(R.id.openEditTaskButton).setOnClickListener {
-            EditTaskDialogFragment().show(supportFragmentManager, "EditTaskDialog")
-        }
     }
 
     override fun onResume() {
@@ -43,7 +39,10 @@ class TasksActivity : AppCompatActivity() {
 
         cardRoot.visibility = View.VISIBLE
         cardRoot.findViewById<TextView>(R.id.taskTitle).text = task.title
-        cardRoot.findViewById<TextView>(R.id.taskOwner).text = getString(R.string.xml_task_owner_fmt, task.assignee)
+        val assigneeName = task.participants.firstOrNull { it.role.equals("MEMBER", ignoreCase = true) }?.name
+            ?: task.participants.firstOrNull { it.role.equals("ADMIN", ignoreCase = true) }?.name
+            ?: task.ownerName
+        cardRoot.findViewById<TextView>(R.id.taskOwner).text = getString(R.string.xml_task_owner_fmt, assigneeName)
         cardRoot.findViewById<TextView>(R.id.taskStatus).text = getString(R.string.xml_task_status_fmt, task.status)
 
         // Listeners para botões do card

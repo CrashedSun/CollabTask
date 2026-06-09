@@ -66,14 +66,6 @@
                         android:textColor="@color/xml_text_primary"
                         android:textSize="18sp" />
 
-                    <TextView
-                        android:id="@+id/profileRoleText"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="6dp"
-                        android:text="Perfil: Membro"
-                        android:textColor="@color/xml_text_secondary"
-                        android:textSize="16sp" />
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
 
@@ -108,15 +100,14 @@
 
                         <com.google.android.material.card.MaterialCardView
                             android:layout_width="0dp"
-                            android:layout_height="wrap_content"
+                            android:layout_height="120dp"
                             android:layout_weight="1"
                             app:cardBackgroundColor="@color/xml_surface_muted"
                             app:cardCornerRadius="10dp">
 
-                            <LinearLayout
+                            <FrameLayout
                                 android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:orientation="vertical"
+                                android:layout_height="match_parent"
                                 android:padding="10dp">
 
                                 <TextView
@@ -124,31 +115,31 @@
                                     android:layout_height="wrap_content"
                                     android:text="@string/xml_profile_created_tasks"
                                     android:textColor="@color/xml_text_secondary"
-                                    android:textSize="12sp" />
+                                    android:textSize="12sp"
+                                    android:layout_gravity="top|start" />
 
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:layout_marginTop="6dp"
                                     android:text="0"
                                     android:textColor="@color/xml_primary"
                                     android:textSize="28sp"
-                                    android:textStyle="bold" />
-                            </LinearLayout>
+                                    android:textStyle="bold"
+                                    android:layout_gravity="bottom|start" />
+                            </FrameLayout>
                         </com.google.android.material.card.MaterialCardView>
 
                         <com.google.android.material.card.MaterialCardView
                             android:layout_width="0dp"
-                            android:layout_height="wrap_content"
+                            android:layout_height="120dp"
                             android:layout_marginStart="8dp"
                             android:layout_weight="1"
                             app:cardBackgroundColor="@color/xml_surface_muted"
                             app:cardCornerRadius="10dp">
 
-                            <LinearLayout
+                            <FrameLayout
                                 android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:orientation="vertical"
+                                android:layout_height="match_parent"
                                 android:padding="10dp">
 
                                 <TextView
@@ -156,31 +147,31 @@
                                     android:layout_height="wrap_content"
                                     android:text="@string/xml_profile_assigned_tasks"
                                     android:textColor="@color/xml_text_secondary"
-                                    android:textSize="12sp" />
+                                    android:textSize="12sp"
+                                    android:layout_gravity="top|start" />
 
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:layout_marginTop="6dp"
                                     android:text="0"
                                     android:textColor="@color/xml_text_primary"
                                     android:textSize="28sp"
-                                    android:textStyle="bold" />
-                            </LinearLayout>
+                                    android:textStyle="bold"
+                                    android:layout_gravity="bottom|start" />
+                            </FrameLayout>
                         </com.google.android.material.card.MaterialCardView>
 
                         <com.google.android.material.card.MaterialCardView
                             android:layout_width="0dp"
-                            android:layout_height="wrap_content"
+                            android:layout_height="120dp"
                             android:layout_marginStart="8dp"
                             android:layout_weight="1"
                             app:cardBackgroundColor="@color/xml_surface_muted"
                             app:cardCornerRadius="10dp">
 
-                            <LinearLayout
+                            <FrameLayout
                                 android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:orientation="vertical"
+                                android:layout_height="match_parent"
                                 android:padding="10dp">
 
                                 <TextView
@@ -188,17 +179,18 @@
                                     android:layout_height="wrap_content"
                                     android:text="@string/xml_profile_completed_tasks"
                                     android:textColor="@color/xml_text_secondary"
-                                    android:textSize="12sp" />
+                                    android:textSize="12sp"
+                                    android:layout_gravity="top|start" />
 
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:layout_marginTop="6dp"
                                     android:text="0"
                                     android:textColor="@color/xml_success"
                                     android:textSize="28sp"
-                                    android:textStyle="bold" />
-                            </LinearLayout>
+                                    android:textStyle="bold"
+                                    android:layout_gravity="bottom|start" />
+                            </FrameLayout>
                         </com.google.android.material.card.MaterialCardView>
                     </LinearLayout>
                 </LinearLayout>

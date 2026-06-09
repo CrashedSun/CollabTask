@@ -13,11 +13,10 @@ import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.OutlinedTextField
-import androidx.compose.material3.SnackbarHost
-import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -35,19 +34,17 @@ fun EditTaskScreen(
     onSave: () -> Unit,
     taskViewModel: TaskViewModel = viewModel()
 ) {
+    val tasks by taskViewModel.tasks.collectAsState()
     var status by remember { mutableStateOf("") }
     var comment by remember { mutableStateOf("") }
     var isLoading by remember { mutableStateOf(false) }
     var errorMessage by remember { mutableStateOf<String?>(null) }
-    val snackbarHostState = remember { SnackbarHostState() }
 
-    // Carregar dados da tarefa ao abrir a tela
-    LaunchedEffect(Unit) {
-        val tasks = taskViewModel.getTasks()
-        val firstTask = tasks.firstOrNull()
-        if (firstTask != null) {
-            status = firstTask.status
-            comment = ""
+    LaunchedEffect(tasks) {
+        tasks.firstOrNull()?.let { firstTask ->
+            if (status.isBlank()) {
+                status = firstTask.status
+            }
         }
     }
 
@@ -60,7 +57,7 @@ fun EditTaskScreen(
     ) {
         Text("Editar Tarefa", style = MaterialTheme.typography.headlineSmall, fontWeight = FontWeight.Bold)
         Text(
-            "Atualize status, progresso e comentarios.",
+            "Atualize status, progresso e comentários.",
             style = MaterialTheme.typography.bodyMedium,
             color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.7f)
         )
@@ -82,9 +79,9 @@ fun EditTaskScreen(
                     enabled = !isLoading
                 )
 
-                if (errorMessage != null) {
+                if (!errorMessage.isNullOrBlank()) {
                     Text(
-                        text = errorMessage ?: "",
+                        text = errorMessage.orEmpty(),
                         color = MaterialTheme.colorScheme.error,
                         style = MaterialTheme.typography.bodySmall
                     )
@@ -92,34 +89,32 @@ fun EditTaskScreen(
 
                 Button(
                     onClick = {
-                        if (status.isNotBlank()) {
-                            isLoading = true
-                            val success = taskViewModel.updateFirstTask(
-                                status = status,
-                                comment = comment
-                            )
-                            isLoading = false
-
-                            if (success) {
-                                onSave()
-                            } else {
-                                errorMessage = "Erro ao salvar alteracoes. Tente novamente."
-                            }
-                        } else {
-                            errorMessage = "Status nao pode estar vazio"
+                        if (status.isBlank()) {
+                            errorMessage = "Status não pode estar vazio."
+                            return@Button
                         }
+                        isLoading = true
+                        taskViewModel.updateFirstTask(
+                            status = status,
+                            comment = comment,
+                            onSuccess = {
+                                isLoading = false
+                                onSave()
+                            },
+                            onError = {
+                                isLoading = false
+                                errorMessage = it
+                            }
+                        )
                     },
                     modifier = Modifier.fillMaxWidth(),
                     enabled = !isLoading
                 ) {
                     if (isLoading) {
-                        CircularProgressIndicator(
-                            modifier = Modifier
-                                .align(Alignment.CenterVertically)
-                                .padding(end = 8.dp)
-                        )
+                        CircularProgressIndicator(modifier = Modifier.align(Alignment.CenterVertically))
+                    } else {
+                        Text("Salvar Alterações")
                     }
-                    Text("Salvar Alteracoes")
                 }
 
                 OutlinedButton(
@@ -132,7 +127,4 @@ fun EditTaskScreen(
             }
         }
     }
-
-    SnackbarHost(snackbarHostState)
 }
-

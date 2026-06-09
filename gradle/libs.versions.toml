@@ -1,5 +1,5 @@
 [versions]
-agp = "9.1.0"
+agp = "9.2.1"
 kotlin = "2.2.20"
 coreKtx = "1.18.0"
 junit = "4.13.2"
@@ -11,6 +11,11 @@ activityCompose = "1.11.0"
 lifecycleRuntimeKtx = "2.9.4"
 composeBom = "2026.01.00"
 navigationCompose = "2.9.4"
+firebaseBom = "33.7.0"
+googleServices = "4.4.2"
+coroutines = "1.9.0"
+playServicesAuth = "21.2.0"
+lifecycleViewModelKtx = "2.9.4"
 
 [libraries]
 coreKtx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -30,9 +35,16 @@ composeUiTestManifest = { group = "androidx.compose.ui", name = "ui-test-manifes
 composeMaterial3 = { group = "androidx.compose.material3", name = "material3" }
 composeMaterialIconsExtended = { group = "androidx.compose.material", name = "material-icons-extended" }
 navigationCompose = { group = "androidx.navigation", name = "navigation-compose", version.ref = "navigationCompose" }
+firebaseBom = { group = "com.google.firebase", name = "firebase-bom", version.ref = "firebaseBom" }
+firebaseAuthKtx = { group = "com.google.firebase", name = "firebase-auth-ktx" }
+firebaseFirestoreKtx = { group = "com.google.firebase", name = "firebase-firestore-ktx" }
+playServicesAuth = { group = "com.google.android.gms", name = "play-services-auth", version.ref = "playServicesAuth" }
+coroutinesAndroid = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-android", version.ref = "coroutines" }
+coroutinesPlayServices = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-play-services", version.ref = "coroutines" }
+lifecycleViewModelKtx = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-ktx", version.ref = "lifecycleViewModelKtx" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }
 kotlinAndroid = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlinCompose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
-
+googleServices = { id = "com.google.gms.google-services", version.ref = "googleServices" }
